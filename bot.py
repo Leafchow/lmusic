@@ -74,11 +74,12 @@ _YDL_CLIENTS = [
 def _make_ydl_opts(extra: dict | None = None) -> dict:
     """Base yt-dlp options, with cookies injected when available."""
     opts: dict = {
-        "format": "bestaudio/best",
+        "format": "bestaudio[ext=webm]/bestaudio[ext=m4a]/bestaudio/best",
         "noplaylist": True,
         "quiet": True,
         "no_warnings": True,
         "source_address": "0.0.0.0",
+        "format_sort": ["abr", "asr"],
     }
     if COOKIE_FILE:
         opts["cookiefile"] = COOKIE_FILE
